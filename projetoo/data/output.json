@@ -1,0 +1,35 @@
+[
+  {
+    "category": "Leite Integral Piracanjuba 1L",
+    "normalizedTitle": "leite integral piracanjuba 1l",
+    "count": 1,
+    "products": [
+      {
+        "title": "Leite Integral Piracanjuba 1L",
+        "supermarket": "Supermercado A"
+      }
+    ]
+  },
+  {
+    "category": "Leite Piracanjuba Integral 1L",
+    "normalizedTitle": "leite piracanjuba integral 1l",
+    "count": 1,
+    "products": [
+      {
+        "title": "Leite Piracanjuba Integral 1L",
+        "supermarket": "Supermercado B"
+      }
+    ]
+  },
+  {
+    "category": "Leite Desnatado Piracanjuba 1L",
+    "normalizedTitle": "leite desnatado piracanjuba 1l",
+    "count": 1,
+    "products": [
+      {
+        "title": "Leite Desnatado Piracanjuba 1L",
+        "supermarket": "Supermercado C"
+      }
+    ]
+  }
+]

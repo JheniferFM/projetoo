@@ -1,44 +1,38 @@
-// src/categorizer.js
+const normalizer = require('./normalizer');
+const logger = require('./logger');
 
-function normalizeTitle(title) {
-    // Normaliza o título, removendo palavras irrelevantes e deixando tudo em minúsculo
-    return title
-      .toLowerCase()
-      .replace(/leite|integral|desnatado|semi-desnatado|kg|litro|1l|2l/g, '')
-      .trim()
-      .replace(/\s+/g, ' '); // Remove espaços extras
-  }
-  
-  function categorizer(products) {
-    const categories = [];
-  
+/**
+ * Categoriza os produtos, agrupando equivalentes e diferenciando similares.
+ * @param {Array} products Lista de produtos
+ * @returns {Array} Produtos categorizados
+ */
+function categorizer(products) {
+    logger.info('Iniciando categorização dos produtos...');
+    
+    let categories = [];
+
     products.forEach(product => {
-      // Normaliza o título do produto
-      const normalizedTitle = normalizeTitle(product.title);
-  
-      // Encontra a categoria correspondente com base no título normalizado
-      let category = categories.find(category => normalizeTitle(category.category) === normalizedTitle);
-  
-      // Se não encontrar, cria uma nova categoria
-      if (!category) {
-        category = {
-          category: product.title,
-          count: 0,
-          products: []
-        };
-        categories.push(category);
-      }
-  
-      // Atualiza a contagem e adiciona o produto à categoria
-      category.count += 1;
-      category.products.push({
-        title: product.title,
-        supermarket: product.supermarket
-      });
+        const normalizedTitle = normalizer.normalizeTitle(product.title);
+        
+        let foundCategory = categories.find(category => 
+            normalizer.areSimilar(normalizedTitle, category.normalizedTitle)
+        );
+
+        if (foundCategory) {
+            foundCategory.products.push(product);
+            foundCategory.count++;
+        } else {
+            categories.push({
+                category: product.title, 
+                normalizedTitle,
+                count: 1,
+                products: [product]
+            });
+        }
     });
-  
+
+    logger.info('Categorização concluída com sucesso.');
     return categories;
-  }
-  
-  module.exports = categorizer;
-  
+}
+
+module.exports = categorizer;
