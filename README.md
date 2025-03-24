@@ -71,19 +71,23 @@ A API estará disponível em `http://localhost:3000` para consulta dos produtos 
 
 ```
 projetoo/
-├── README.md                # Documentação do projeto
-├── package.json             # Configuração do npm
-├── index.js                 # Ponto de entrada do sistema
-├── server.js                # Servidor Express.js para API
+├── index.js
+├── package.json
+├── package-lock.json
+├── data/
+│   ├── data.json
+│   ├── output.json
+├── logs/
+│   ├── app.log
+├── node_modules/
 ├── src/
-│   ├── categorizer.js       # Lógica de categorizacão
-│   ├── normalizer.js        # Função para normalização de texto
-│   ├── logger.js            # Sistema de logs
-│   ├── data.json            # Base de dados de exemplo
+│   ├── categorizer.js
+│   ├── logger.js
+│   ├── normalizer.js
+│   ├── server.js
 ├── tests/
-│   ├── categorizer.test.js  # Testes automatizados
-└── data/
-    ├── output.json          # Resultado da categorizacão
+│   ├── categorizer.test.js
+
 ```
 
 ## Exemplo de Entrada e Saída
@@ -121,19 +125,6 @@ A API permite consultar as categorias de produtos.
 ### 📌 **Obter produtos de uma categoria**
 **GET** `http://localhost:3000/categories/Leite Integral Piracanjuba 1L`
 
-## Como Contribuir 🚀
-
-1. Faça um fork do repositório.
-2. Crie uma nova branch com a feature desejada: `git checkout -b minha-feature`
-3. Faça commit das suas alterações: `git commit -m 'Minha nova feature'`
-4. Envie para o repositório remoto: `git push origin minha-feature`
-5. Abra um Pull Request.
-
-## Licença
-
-Este projeto está licenciado sob a [MIT License](LICENSE).
-
 ---
 
-Feito com 💜 para ajudar no seu crescimento profissional! 🚀
 
